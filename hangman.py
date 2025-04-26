@@ -11,8 +11,11 @@ print(placeholder+"\n")
 guess= input("Take a guess: ").lower()
 
 
+display=""
 for i in range(len(animal)):
     if animal[i]==guess:
-        placeholder[i*2]=guess
+        display+=guess
+    else:
+        display+="_"
 
 print("\n\n"+''.join(placeholder)+"\n\n")
