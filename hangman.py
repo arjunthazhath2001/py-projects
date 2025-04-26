@@ -1,10 +1,19 @@
 import random
 import hangman_Art
+import hangman_words
 
-words = ["cat", "rat", "dog", "lion", "tiger", "elephant", "giraffe", "zebra", "bear", "wolf"]
+words=hangman_words.animals
+
+
+
 placeholder=""
 lives=6
 animal=words[random.randint(0,len(words)-1)]
+
+
+print(hangman_Art.title+"\n\n")
+
+
 print(animal)
 
 for a in animal:
@@ -20,20 +29,20 @@ gameOver= False
 
 
 while not gameOver:
-    print(hangman_Art.stages[lives-1])
     
     guess= input("Take a guess: ").lower()
 
     
     
-    if guess not in animal:
-        lives-=1
+    
     
     chances-=1
     
     display=""
     
-    
+    if guess in correct_letters:
+        print('You have already entered: '+guess)
+        continue
 
 
     for i in range(len(animal)):
@@ -45,11 +54,19 @@ while not gameOver:
         else:
             display+="_ "
     
+    if guess not in animal:
+        lives-=1
+        print(f"********{lives} LIVES LEFT********")
+        if(lives==0):
+            gameOver=True
+            print("********You LOOSE********")
+    
+    
+    print(hangman_Art.stages[lives])
+
+        
     if '_' not in display:
-        print("YOU WIN")
-        gameOver=True
-    elif lives==0:
-        print("YOU LOOSE")
+        print("********YOU WIN********")
         gameOver=True
 
 
