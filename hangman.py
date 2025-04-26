@@ -8,14 +8,25 @@ for a in animal:
     placeholder+="_ "
 
 print(placeholder+"\n")
-guess= input("Take a guess: ").lower()
 
+chances= len(animal)
 
-display=""
-for i in range(len(animal)):
-    if animal[i]==guess:
-        display+=guess
-    else:
-        display+="_"
+correct_letters=[]
 
-print("\n\n"+''.join(placeholder)+"\n\n")
+while(chances):
+    guess= input("Take a guess: ").lower()
+
+    chances-=1
+    
+    display=""
+
+    for i in range(len(animal)):
+        if animal[i]==guess:
+            display+="{} ".format(guess)
+            correct_letters.append(guess)
+        elif (animal[i] in correct_letters):
+            display+="{} ".format(animal[i])
+        else:
+            display+="_ "
+
+    print(display+"\n\n\n")
