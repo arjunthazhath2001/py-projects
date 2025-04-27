@@ -7,11 +7,11 @@ def encode(text,shifts):
     encoded=""
     for t in text:
         if t not in cipher_art.letters:
-            decoded+=t
-            
-        index=cipher_art.letters.index(t)
-        newShift= (index+shifts)%52
-        encoded += cipher_art.letters[newShift]
+            encoded+=t
+        else:    
+            index=cipher_art.letters.index(t)
+            newShift= (index+shifts)%52
+            encoded += cipher_art.letters[newShift]
     print("\n\n Decoded Text: "+ encoded)    
 
 
@@ -20,9 +20,10 @@ def decode(text,shifts):
     for t in text:
         if t not in cipher_art.letters:
             decoded+=t
-        index=cipher_art.letters.index(t)
-        newShift= (index+-shifts)%52
-        decoded+= cipher_art.letters[newShift]
+        else:
+            index=cipher_art.letters.index(t)
+            newShift= (index+-shifts)%52
+            decoded+= cipher_art.letters[newShift]
     print("\n\n Encoded Text: "+decoded)    
     
 
