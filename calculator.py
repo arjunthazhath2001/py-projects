@@ -31,10 +31,8 @@ def doOperation(n1,n2,op):
 
 def main():
     num1= asknum()
-    ans=0
     
     def calc(num):
-        global ans
         operation= input("+\n-\n*\n/\nPick an operation:")
         if(operation not in "+-/*"):
             print("wrong input")
@@ -42,15 +40,17 @@ def main():
         num2= asknum2()        
         ans= doOperation(num,num2,operation)        
         print(f"{num} {operation} {num2} = {ans}")
-        
-    
-    calc(num1)
-    res= input(f"Type 'y' to continue calculting with {ans} or 'n' to start new calc")
+        res= input(f"Type 'y' to continue calculting with {ans} or 'n' to start new calc")
 
-    if res=="n":
-        main()
-    elif res=="y":
-        calc(ans)
+        if res=="n":
+            main()
+        elif res=="y":
+            calc(ans)
+        else:
+            print("THANKYOU FOR USING")
+            return     
+
+    calc(num1)
         # operation= input("+\n-\n*\n/\nPick an operation:")
         # if(operation not in "+-/*"):
         #     print("wrong input")
@@ -60,8 +60,5 @@ def main():
         
         # newAns= doOperation(ans,num2,operation)
         # print(f"{ans} {operation} {num2} = {newAns}")
-    else:
-        print("THANKYOU FOR USING")
-        return     
-
+   
 main()
