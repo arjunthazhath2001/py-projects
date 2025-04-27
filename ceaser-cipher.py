@@ -21,7 +21,7 @@ def decode(text,shifts):
         if t not in cipher_art.letters:
             decoded+=t
         index=cipher_art.letters.index(t)
-        newShift= (index+shifts)%52
+        newShift= (index+-shifts)%52
         decoded+= cipher_art.letters[newShift]
     print("\n\n Encoded Text: "+decoded)    
     
