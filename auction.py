@@ -9,13 +9,12 @@ print("WELCOME TO SECRET AUCTION PROGRAM")
 
 
 def askbid():
-    bid=0
     try:
         bid= int(input("\n\n WHATS YOUR BID?: "))
         return bid
     except:
         print('\n\n**********Enter a valid amount**********')
-        askbid()
+        return askbid()
 
 def bidding():
     name= input("\n\n WHATS UR NAME?: ")
