@@ -7,20 +7,21 @@ print(auction_art.hammer)
 
 print("WELCOME TO SECRET AUCTION PROGRAM")
 
+
 def askbid():
+    bid=0
     try:
         bid= int(input("\n\n WHATS YOUR BID?: "))
+        return bid
     except:
         print('\n\n**********Enter a valid amount**********')
         askbid()
-    return bid
-        
 
 def bidding():
     name= input("\n\n WHATS UR NAME?: ")
-    bid= askbid()
-    
-    bidList[name]=bid
+    newbid= askbid()
+    print(newbid)
+    bidList[name]=newbid
     response= input("\n\n ARE THERE ANY OTHER BIDDERS. Type y or n.: ")
     if response=="y":
         os.system('clear')
