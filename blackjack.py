@@ -3,14 +3,13 @@ from bj_art import *
 import os
 
 
-user_cards=[]
-comp_cards=[]
 
 
 def mainGame():
     
     ###################### GENERATE 2 CARDS FOR DEALER AND PLAYER #####################
-    
+    user_cards=[]
+    comp_cards=[]
     os.system('clear')
     print(logo)
     def generateCard():
@@ -62,12 +61,11 @@ def mainGame():
                 
             elif sum(comp_cards) >=17:
                 if sum(comp_cards)>sum(user_cards):
-                    print("You lose 😤")
-                    
+                    print("You lose 😤")        
                 elif sum(user_cards)>sum(comp_cards):
                     print("You win 😁")
-            else:
-                print("Its a draw")
+                else:
+                    print("Its a draw")
             
             ans= input("\n Do you want another game: y or n : ")
             if ans=="y":
@@ -80,8 +78,8 @@ def mainGame():
         elif(user_choice=="y"):
             user_cards.append(generateCard())
             if sum(user_cards)<21:
-                print(f"Your cards: {user_cards}, final score: {sum(user_cards)}")
-                print(f"Computer's final hand: {comp_cards}, final score: {sum(comp_cards)}")
+                print(f"Your cards: {user_cards}, current score: {sum(user_cards)}")
+                print(f"Computer's first card: {comp_cards[0]}, current score: {comp_cards[0]}")
                 game()
             elif sum(user_cards)==21:
                 print(f"Your final hand: {user_cards}, final score: {sum(user_cards)}")
@@ -91,6 +89,8 @@ def mainGame():
                 else:
                     print("You win 😁")
             else:
+                print(f"Your final hand: {user_cards}, final score: {sum(user_cards)}")
+                print(f"Computer's final hand: {comp_cards}, final score: {sum(comp_cards)}")
                 print("You went over. You lose 😭")
             
             ans= input("\n Do you want another game: y or n : ")
