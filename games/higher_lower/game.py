@@ -18,7 +18,11 @@ def game(A):
     print(logo)    
     if score:
         print(f"You're right! Current score: {score}")
-    B= random.randint(0,len(data)-1)
+    
+    B=A
+    while B==A:
+        B= random.randint(0,len(data)-1)
+    
     print(f"Compare A: {data[A]['name']}, a {data[A]['description']}, from {data[A]['country']}")
     print(vs)
     print(f"Against B: {data[B]['name']}, a {data[B]['description']}, from {data[B]['country']}")
