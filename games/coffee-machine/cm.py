@@ -36,7 +36,6 @@ money=0
 
 
 def reduceResources(choice):
-    global resources
     global money
     for key in resources:
         resources[key]-= MENU[choice]['ingredients'][key]
