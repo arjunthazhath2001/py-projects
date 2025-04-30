@@ -10,6 +10,9 @@
 # #     green= rgb[1]
 # #     blue= rgb[2]
 # #     result.append((red,green,blue))
+import random
+from turtle import Turtle, Screen
+import turtle
 
 colors= [
     (177, 173, 8),
@@ -27,4 +30,28 @@ colors= [
     (172, 52, 108)
 ]
 
+y=0
+def get_color():
+    color= random.choice(colors)
+    return color
 
+turtle.colormode(255)
+
+timmy= Turtle()
+
+print(get_color())
+
+for i in range(10):
+    for j in range(10):
+        timmy.dot(10, random.choice(colors))
+        timmy.forward(10)
+        timmy.penup()
+        timmy.forward(10)
+    y+=30
+    timmy.setpos(0,y)
+
+    
+    
+
+screen = Screen()
+screen.exitonclick()
