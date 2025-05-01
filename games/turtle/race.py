@@ -32,13 +32,13 @@ if user_bet:
 
 while game_on:    
     for turtle in turtles:
-        if turtle.xcor()==230:
+        if turtle.xcor()>230:
             game_on=False
-            win= tuple.pencolor()
+            win= turtle.pencolor()
             if win==user_bet:
                 print(f"{user_bet} HAS WON")
             else:
-                print("YOU LOSE")
+                print(f"YOU LOSE.{turtle.pencolor()} is the winner")
             
         number= random.randint(0,10)
         turtle.forward(number)
