@@ -38,16 +38,18 @@ def get_color():
 turtle.colormode(255)
 
 timmy= Turtle()
-
+timmy.penup()
+timmy.speed("fastest")
 print(get_color())
 
+timmy.hideturtle()
 for i in range(10):
     for j in range(10):
-        timmy.dot(10, random.choice(colors))
-        timmy.forward(10)
-        timmy.penup()
-        timmy.forward(10)
-    y+=30
+        timmy.dot(20, random.choice(colors))
+        timmy.forward(20)
+        # timmy.penup()
+        timmy.forward(20)
+    y+=40
     timmy.setpos(0,y)
 
     
