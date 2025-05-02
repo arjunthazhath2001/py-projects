@@ -8,7 +8,7 @@ class ScoreBoard(Turtle):
         self.color("white")
         self.hideturtle()
         self.penup()
-        self.setposition(0,280)
+        self.setposition(0,200)
         self.write(f"Score: {self.score}",align="center",font=('Arial', 16, 'normal'))
 
     
@@ -16,3 +16,9 @@ class ScoreBoard(Turtle):
         self.score+=1
         self.clear()
         self.write(f"Score: {self.score}",align="center",font=('Arial', 16, 'normal'))
+
+
+    def gameover(self):
+        self.setposition(0,0)
+        self.write("Game over",align="center",font=('Arial', 16, 'normal'))
+
