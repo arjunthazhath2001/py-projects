@@ -10,3 +10,13 @@
 # print(temperatures)
 
 import pandas
+
+data= pandas.read_csv("weather_data.csv")
+
+# temp= data[1].to_list()
+# print(temp)
+
+print(type(data)) #DATA FRAME
+print(type(data["temp"])) # SERIES
+
+print(data["temp"].to_list())
