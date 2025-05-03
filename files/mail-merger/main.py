@@ -17,16 +17,16 @@ with open("./input/letters/starting_letter.txt") as file:
 print(contents)
 
 with open("./input/names/invited_names.txt") as file:
-    p_names=file.read()
-    names= p_names.split('\n')
+    p_names=file.readlines()
     
 
+print(p_names)
 
-
-for i in range(len(names)):
-    new_letter= contents.replace('[name]',names[i]) 
-    file= open(f"./output/readytosend/{names[i]}.txt",'w')
-    file.write(new_letter)
+for i in range(len(p_names)):
+    stripped_name=p_names[i].strip('\n')
+    new_letter= contents.replace('[name]',stripped_name) 
+    with open(f"./output/readytosend/letter_for_{stripped_name}.docx",'w') as file:
+        file.write(new_letter)
 
 
     
