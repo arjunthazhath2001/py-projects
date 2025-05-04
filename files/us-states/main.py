@@ -23,16 +23,13 @@ while game_is_on:
    
     state_data= data[data["state"]==state]
     
-    if not state_data.empty():
         
-        text_turtle= Turtle()
-        text_turtle.penup()
-        text_turtle.hideturtle()
-        text_turtle.goto(state_data["x"].item(),state_data["y"].item())
-        text_turtle.write(f"{state_data['state'].item()}")
+    text_turtle= Turtle()
+    text_turtle.penup()
+    text_turtle.hideturtle()
+    text_turtle.goto(state_data["x"].item(),state_data["y"].item())
+    text_turtle.write(f"{state_data['state'].item()}")
 
-    else:
-        print("Enter correct data")
 
 
 
