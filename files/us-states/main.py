@@ -22,6 +22,10 @@ while game_is_on:
     state= screen.textinput(f"{len(guesses)}/50 States correct", "Enter name of the state:").title()
 
     
+    if state=="Exit":
+        game_is_on=False        
+        break
+    
     if state in all_states:
         state_data= data[data["state"]==state]
         if state not in guesses:
@@ -37,5 +41,10 @@ while game_is_on:
         continue
 
 
+data_dict={
+    "States not guessed": [s for s in all_states if s not in guesses]
+}
 
-screen.mainloop()
+
+df= pandas.DataFrame(data_dict)
+df.to_csv('trial.csv')
