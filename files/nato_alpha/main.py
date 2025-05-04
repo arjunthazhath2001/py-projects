@@ -1,9 +1,14 @@
-import random
-names=["a","b","c"]
+import pandas
 
-marks= {name:random.randint(60,90) for name in names}
+data= pandas.read_csv("nato_phonetic_alphabet.csv")
 
-passed= {name:mark for name,mark in marks.items() if mark>67}
 
-print(marks)
-print(passed)
+nato_dict = {data["letter"]: data["code"] for (index, data) in data.iterrows()}
+
+
+
+word= list(input("Enter a name").upper())
+
+res= [nato_dict[w] for w in word]
+
+print(res)
