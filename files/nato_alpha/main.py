@@ -3,7 +3,7 @@ import pandas
 data= pandas.read_csv("nato_phonetic_alphabet.csv")
 
 
-nato_dict = {data["letter"]: data["code"] for (index, data) in data.iterrows()}
+nato_dict = {row["letter"]: row["code"] for (index, row) in data.iterrows()}
 
 
 
