@@ -11,25 +11,30 @@ my_turtle= Turtle()
 
 my_turtle.shape(image)
 
-
+guesses=[]
 data= pandas.read_csv("50_states.csv")
+
+
+all_states= data.state.to_list()
 
 game_is_on=True
 while game_is_on:
-    state= screen.textinput("Guess the state", "Enter name of the state:").title()
+    state= screen.textinput(f"{len(guesses)}/50 States correct", "Enter name of the state:").title()
 
-
-
-   
-    state_data= data[data["state"]==state]
     
-        
-    text_turtle= Turtle()
-    text_turtle.penup()
-    text_turtle.hideturtle()
-    text_turtle.goto(state_data["x"].item(),state_data["y"].item())
-    text_turtle.write(f"{state_data['state'].item()}")
-
+    if state in all_states:
+        state_data= data[data["state"]==state]
+        if state not in guesses:
+            guesses.append(state_data["state"].item())
+            text_turtle= Turtle()
+            text_turtle.penup()
+            text_turtle.hideturtle()
+            text_turtle.goto(state_data["x"].item(),state_data["y"].item())
+            text_turtle.write(f"{state_data['state'].item()}")
+        else:
+            continue
+    else:
+        continue
 
 
 
