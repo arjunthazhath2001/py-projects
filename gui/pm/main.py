@@ -14,6 +14,12 @@ FONT_NAME = "Courier"
 
 
 
+def popup():
+    website= entry.get()
+    email= entry2.get()
+    passwd= entry3.get()
+    
+    messagebox.askquestion(title=website, message=f"Email:{email}\nPassword:{passwd}\nIs this ok?")
 
 
 def gen_password():
@@ -41,8 +47,6 @@ window.config(padx=60,pady=60,bg="white")
 window.minsize(width=600, height=500)
 
 
-def popup():
-    messagebox.askquestion(title="Confirmation", message="U proceed?")
 
 
 canvas= Canvas(width=200,height=224,bg="white",highlightthickness=0)
