@@ -18,12 +18,27 @@ def popup():
     website= entry.get()
     email= entry2.get()
     passwd= entry3.get()
+    
+    if len(website)==0:
+        messagebox.showerror("Error","Website name should atleast have 1 char")
+        return 
+    elif len(email)==0:
+        messagebox.showerror("Error","Enter valid email")
+        return 
+    
+    elif len(passwd)==0:
+        messagebox.showerror("Error","Pls enter pswd")
+        return
 
-    with open("data.txt",'a') as file:
-        file.write(f"{website} | {email} | {passwd}\n")
-    entry.delete(0,END)
-    entry2.delete(0,END)
-    entry3.delete(0,END)
+    else:
+        is_ok= messagebox.askokcancel(title=website,message=f"{email}:{passwd} is this ok?")
+        
+        if is_ok:
+            with open("data.txt",'a') as file:
+                file.write(f"{website} | {email} | {passwd}\n")
+            entry.delete(0,END)
+            entry2.delete(0,END)
+            entry3.delete(0,END)
 
 
     
