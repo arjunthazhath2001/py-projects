@@ -18,9 +18,15 @@ def popup():
     website= entry.get()
     email= entry2.get()
     passwd= entry3.get()
-    
-    messagebox.askquestion(title=website, message=f"Email:{email}\nPassword:{passwd}\nIs this ok?")
 
+    with open("data.txt",'a') as file:
+        file.write(f"{website} | {email} | {passwd}\n")
+    entry.delete(0,END)
+    entry2.delete(0,END)
+    entry3.delete(0,END)
+
+
+    
 
 def gen_password():
     alphabet = [chr(i) for i in range(65, 91)] + [chr(i) for i in range(97, 123)]
@@ -63,6 +69,7 @@ label1.grid(row=1, column=0, padx=5, pady=5)
 
 #Entries
 entry = Entry(width=30)
+entry.focus()
 entry.grid(row=1, column=1, padx=5, pady=5)
 
 # ---------------------------------------------------------------------- #
