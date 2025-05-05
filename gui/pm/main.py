@@ -3,7 +3,7 @@ import random
 from more_itertools import random_permutation
 from tkinter import messagebox
 import clipboard as cp
-
+import json
 # ---------------------------- CONSTANTS ------------------------------- #
 PINK = "#e2979c"
 RED = "#e7305b"
@@ -18,6 +18,12 @@ def popup():
     website= entry.get()
     email= entry2.get()
     passwd= entry3.get()
+    new_data={
+        website:{
+            'email':email,
+            'password':passwd
+        }
+    }
     
     if len(website)==0:
         messagebox.showerror("Error","Website name should atleast have 1 char")
@@ -31,14 +37,24 @@ def popup():
         return
 
     else:
+    
         is_ok= messagebox.askokcancel(title=website,message=f"{email}:{passwd} is this ok?")
         
         if is_ok:
-            with open("data.txt",'a') as file:
-                file.write(f"{website} | {email} | {passwd}\n")
-            entry.delete(0,END)
-            entry2.delete(0,END)
-            entry3.delete(0,END)
+            try:
+                with open("data.json",'r') as file:
+                    data=json.load(file)
+            except FileNotFoundError:
+                with open("data.json","w") as file:
+                    json.dump(new_data,file,indent=4)
+            else:
+                data.update(new_data)
+                with open("data.json","w") as file:
+                    json.dump(data,file,indent=4)
+            finally:
+                entry.delete(0,END)
+                entry2.delete(0,END)
+                entry3.delete(0,END)
 
 
     
@@ -61,6 +77,22 @@ def gen_password():
     cp.copy(al)
 
 
+def search():
+    website= entry.get()
+
+    try:
+        with open("data.json",'r') as file:
+            data=json.load(file)
+        email= data[website]['email']
+        password= data[website]['password']
+    
+    except FileNotFoundError:
+        messagebox.showerror("Error","FIle Doesnot exist")
+    except KeyError:
+        messagebox.showerror("Error","WEBSITE Doesnot exist")
+    else:
+        messagebox.askokcancel(title=website,message=f"Email={email}\nPassword:{password}")
+    
 
 window=Tk()
 window.title("PASSWORD MANAGER")
@@ -86,6 +118,10 @@ label1.grid(row=1, column=0, padx=5, pady=5)
 entry = Entry(width=30)
 entry.focus()
 entry.grid(row=1, column=1, padx=5, pady=5)
+
+button3 = Button(text="Search",fg="white",width=20,bg="blue",highlightthickness=0,command=search)
+button3.grid(row=1, column=2, padx=5, pady=5)
+
 
 # ---------------------------------------------------------------------- #
 
