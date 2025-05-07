@@ -48,20 +48,26 @@ today= datetime.datetime.now().strftime("%Y%m%d")
 
 post_params={
     "date":today,
-    "quantity": '1000'
+    "quantity": input("HOw much")
 }
 
 
-# response= requests.post(url=pixel_post_endpoint,json=post_params,headers=headers)
+response= requests.post(url=pixel_post_endpoint,json=post_params,headers=headers)
+print(response.text)
+
+
+
+# pixel_put_delete_endpoint= f"{pixel_post_endpoint}/{today}"
+
+# put_params={
+#     "quantity":'100000'
+# }
+
+# response= requests.put(url=pixel_put_delete_endpoint,json=put_params,headers=headers)
 # print(response.text)
 
 
 
-pixel_put_endpoint= f"{pixel_post_endpoint}/{today}"
+# response= requests.delete(url=pixel_put_delete_endpoint,headers=headers)
 
-put_params={
-    "quantity":'20'
-}
-
-response= requests.post(url=pixel_post_endpoint,json=post_params,headers=headers)
-print(response.text)
+# print(response.text)
