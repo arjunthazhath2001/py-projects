@@ -9,7 +9,7 @@ AUTH_HEADER=os.getenv('AUTH_HEADER')
 
 
 
-SHEETY_URL="https://api.sheety.co/da71f394d813c70dbdef5466e123c1eb/flightDeals/prices"
+SHEETY_URL="https://api.sheety.co/f97511de9beacb5be16d261bede9f763/flightDeals/prices"
 
 headers = {
     "Content-Type": "application/json",

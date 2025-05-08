@@ -17,5 +17,10 @@ for data in list_data:
     data['iataCode']= flight_search.city['iataCode']
 
 
+# for data in list_data:
+#     data_manager.update(data)
+
+
 for data in list_data:
-    data_manager.update(data)
+    flight_search.get_prices(data)
+    

@@ -1,6 +1,9 @@
 import os
 from dotenv import load_dotenv
 import requests
+import datetime as dt
+
+
 load_dotenv()
 
 
@@ -44,6 +47,26 @@ class FlightSearch:
         
         response= requests.post(url=token_request_url,data=params,headers=token_headers)
         return response.json()["access_token"]
+    
+    
+    def get_prices(self,city):
+        price_request_url= "https://test.api.amadeus.com/v2/shopping/flight-offers"
+        
+        self.city=city
+        date= dt.datetime.now().strftime('%Y-%m-%d')
+        headers={
+            "Authorization": f"Bearer {self.token}"
+        }
+        params={
+            "originLocationCode": "LON",
+            "destinationLocationCode": self.city['iataCode'],
+            "departureDate": date,
+            "adults": 1,
+            "nonStop": "true",
+        }
+        
+        response= requests.get(url=price_request_url,params=params,headers=headers)
+        print(response.text)
 
     
     
